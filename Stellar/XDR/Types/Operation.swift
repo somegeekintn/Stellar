@@ -1,0 +1,153 @@
+//
+//  Operation.swift
+//  Stellar
+//
+//  Created by Casey Fleser on 1/14/18.
+//  Copyright © 2018 Quiet Spark. All rights reserved.
+//
+
+import Foundation
+
+
+// See https://raw.githubusercontent.com/stellar/js-stellar-base/master/src/generated/stellar-xdr_generated.js
+//
+//	xdr.struct("Operation", [
+//	  ["sourceAccount", xdr.option(xdr.lookup("AccountId"))],
+//	  ["body", xdr.lookup("OperationBody")],
+//	]);
+//
+//	xdr.union("OperationBody", {
+//	  switchOn: xdr.lookup("OperationType"),
+//	  switchName: "type",
+//	  switches: [
+//		["createAccount", "createAccountOp"],
+//		["payment", "paymentOp"],
+//		["pathPayment", "pathPaymentOp"],
+//		["manageOffer", "manageOfferOp"],
+//		["createPassiveOffer", "createPassiveOfferOp"],
+//		["setOption", "setOptionsOp"],
+//		["changeTrust", "changeTrustOp"],
+//		["allowTrust", "allowTrustOp"],
+//		["accountMerge", "destination"],
+//		["inflation", xdr.void()],
+//		["manageDatum", "manageDataOp"],
+//	  ],
+//	  arms: {
+//		createAccountOp: xdr.lookup("CreateAccountOp"),
+//		paymentOp: xdr.lookup("PaymentOp"),
+//		pathPaymentOp: xdr.lookup("PathPaymentOp"),
+//		manageOfferOp: xdr.lookup("ManageOfferOp"),
+//		createPassiveOfferOp: xdr.lookup("CreatePassiveOfferOp"),
+//		setOptionsOp: xdr.lookup("SetOptionsOp"),
+//		changeTrustOp: xdr.lookup("ChangeTrustOp"),
+//		allowTrustOp: xdr.lookup("AllowTrustOp"),
+//		destination: xdr.lookup("AccountId"),
+//		manageDataOp: xdr.lookup("ManageDataOp"),
+//	  },
+//	});
+//
+//	xdr.enum("OperationType", {
+//	  createAccount: 0,
+//	  payment: 1,
+//	  pathPayment: 2,
+//	  manageOffer: 3,
+//	  createPassiveOffer: 4,
+//	  setOption: 5,
+//	  changeTrust: 6,
+//	  allowTrust: 7,
+//	  accountMerge: 8,
+//	  inflation: 9,
+//	  manageDatum: 10,
+//	});
+
+class Operation: XDRDecodable, CustomStringConvertible {
+	enum Body: XDRDecodable, CustomStringConvertible {
+		case createAccount
+		case payment(_ : PaymentOp)
+		case pathPayment
+		case manageOffer
+		case createPassiveOffer
+		case setOption
+		case changeTrust
+		case allowTrust
+		case accountMerge
+		case inflation
+		case manageDatum
+		
+		var description	: String {
+			switch self {
+				case .createAccount:				return "createAccount"
+				case .payment(let op):				return "payment: \(op)"
+				case .pathPayment:					return "pathPayment"
+				case .manageOffer:					return "manageOffer"
+				case .createPassiveOffer:			return "createPassiveOffer"
+				case .setOption:					return "setOption"
+				case .changeTrust:					return "changeTrust"
+				case .allowTrust:					return "allowTrust"
+				case .accountMerge:					return "accountMerge"
+				case .inflation:					return "inflation"
+				case .manageDatum:					return "manageDatum"
+			}
+		}
+
+		init?(xdr: ExDR) {
+			guard let rawValue = xdr.decodeEnum() else { return nil }
+			
+			switch rawValue {
+				case 0:
+					self = .createAccount
+				
+				case 1:
+					guard let op = PaymentOp(xdr: xdr) else { return nil }
+					
+					self = .payment(op)
+
+				case 2:
+					self = .pathPayment
+
+				case 3:
+					self = .manageOffer
+
+				case 4:
+					self = .createPassiveOffer
+
+				case 5:
+					self = .setOption
+
+				case 6:
+					self = .changeTrust
+
+				case 7:
+					self = .allowTrust
+
+				case 8:
+					self = .accountMerge
+
+				case 9:
+					self = .inflation
+
+				case 10:
+					self = .manageDatum
+
+				default:
+					return nil
+			}
+		}
+	}
+	
+	let sourceAccount	: PublicKey?
+	let body			: Operation.Body
+
+	var description		: String {
+		return "Operation: source: \(self.sourceAccount.map({ "\($0)" }) ?? "no source"), \(self.body)"
+	}
+
+	required init?(xdr: ExDR) {
+		guard let accountID		= PublicKey?(xdr: xdr) else { return nil }
+		guard let body			= Body(xdr: xdr) else { return nil }
+
+		self.sourceAccount = accountID
+		self.body = body
+	}
+}
+

@@ -7,13 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C928F3EA200CC14C0034E82E /* PaymentOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3E9200CC14C0034E82E /* PaymentOp.swift */; };
+		C928F3EC200CC2360034E82E /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3EB200CC2360034E82E /* Asset.swift */; };
+		C928F3EF200CCD8E0034E82E /* TransactionEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3EE200CCD8E0034E82E /* TransactionEnvelope.swift */; };
+		C928F3F1200CCE500034E82E /* DecoratedSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3F0200CCE500034E82E /* DecoratedSignature.swift */; };
 		C92E9DBA200B8769006DB709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DB9200B8769006DB709 /* AppDelegate.swift */; };
 		C92E9DBC200B8769006DB709 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DBB200B8769006DB709 /* ViewController.swift */; };
 		C92E9DBE200B8769006DB709 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C92E9DBD200B8769006DB709 /* Assets.xcassets */; };
 		C92E9DC1200B8769006DB709 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C92E9DBF200B8769006DB709 /* Main.storyboard */; };
+		C92E9DCB200B8801006DB709 /* ExDR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DCA200B8801006DB709 /* ExDR.swift */; };
+		C92E9DD0200B8883006DB709 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DCF200B8883006DB709 /* Base32.swift */; };
+		C92E9DD3200B8DBD006DB709 /* Literals.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DD2200B8DBD006DB709 /* Literals.swift */; };
+		C92E9DD5200B8DE6006DB709 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DD4200B8DE6006DB709 /* PublicKey.swift */; };
+		C92E9DD7200B8E8B006DB709 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DD6200B8E8B006DB709 /* Transaction.swift */; };
+		C92E9DD9200B8FC0006DB709 /* TimeBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DD8200B8FC0006DB709 /* TimeBounds.swift */; };
+		C92E9DDB200B9312006DB709 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DDA200B9312006DB709 /* Memo.swift */; };
+		C92E9DDD200B98D2006DB709 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DDC200B98D2006DB709 /* Operation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C928F3E9200CC14C0034E82E /* PaymentOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOp.swift; sourceTree = "<group>"; };
+		C928F3EB200CC2360034E82E /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
+		C928F3EE200CCD8E0034E82E /* TransactionEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEnvelope.swift; sourceTree = "<group>"; };
+		C928F3F0200CCE500034E82E /* DecoratedSignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedSignature.swift; sourceTree = "<group>"; };
 		C92E9DB6200B8769006DB709 /* Stellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stellar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92E9DB9200B8769006DB709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C92E9DBB200B8769006DB709 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -21,6 +37,15 @@
 		C92E9DC0200B8769006DB709 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C92E9DC2200B8769006DB709 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C92E9DC3200B8769006DB709 /* Stellar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stellar.entitlements; sourceTree = "<group>"; };
+		C92E9DCA200B8801006DB709 /* ExDR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExDR.swift; sourceTree = "<group>"; };
+		C92E9DCC200B8849006DB709 /* Stellar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stellar-Bridging-Header.h"; sourceTree = "<group>"; };
+		C92E9DCF200B8883006DB709 /* Base32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
+		C92E9DD2200B8DBD006DB709 /* Literals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literals.swift; sourceTree = "<group>"; };
+		C92E9DD4200B8DE6006DB709 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
+		C92E9DD6200B8E8B006DB709 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		C92E9DD8200B8FC0006DB709 /* TimeBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBounds.swift; sourceTree = "<group>"; };
+		C92E9DDA200B9312006DB709 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		C92E9DDC200B98D2006DB709 /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,14 +78,43 @@
 		C92E9DB8200B8769006DB709 /* Stellar */ = {
 			isa = PBXGroup;
 			children = (
+				C92E9DC9200B87CD006DB709 /* XDR */,
 				C92E9DB9200B8769006DB709 /* AppDelegate.swift */,
 				C92E9DBB200B8769006DB709 /* ViewController.swift */,
 				C92E9DBD200B8769006DB709 /* Assets.xcassets */,
 				C92E9DBF200B8769006DB709 /* Main.storyboard */,
 				C92E9DC2200B8769006DB709 /* Info.plist */,
 				C92E9DC3200B8769006DB709 /* Stellar.entitlements */,
+				C92E9DCC200B8849006DB709 /* Stellar-Bridging-Header.h */,
 			);
 			path = Stellar;
+			sourceTree = "<group>";
+		};
+		C92E9DC9200B87CD006DB709 /* XDR */ = {
+			isa = PBXGroup;
+			children = (
+				C92E9DD1200B8DA9006DB709 /* Types */,
+				C92E9DCA200B8801006DB709 /* ExDR.swift */,
+				C92E9DCF200B8883006DB709 /* Base32.swift */,
+			);
+			path = XDR;
+			sourceTree = "<group>";
+		};
+		C92E9DD1200B8DA9006DB709 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				C928F3EB200CC2360034E82E /* Asset.swift */,
+				C928F3F0200CCE500034E82E /* DecoratedSignature.swift */,
+				C92E9DD2200B8DBD006DB709 /* Literals.swift */,
+				C92E9DDA200B9312006DB709 /* Memo.swift */,
+				C92E9DDC200B98D2006DB709 /* Operation.swift */,
+				C928F3E9200CC14C0034E82E /* PaymentOp.swift */,
+				C92E9DD4200B8DE6006DB709 /* PublicKey.swift */,
+				C92E9DD8200B8FC0006DB709 /* TimeBounds.swift */,
+				C92E9DD6200B8E8B006DB709 /* Transaction.swift */,
+				C928F3EE200CCD8E0034E82E /* TransactionEnvelope.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +149,7 @@
 				TargetAttributes = {
 					C92E9DB5200B8769006DB709 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,8 +189,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92E9DD7200B8E8B006DB709 /* Transaction.swift in Sources */,
 				C92E9DBC200B8769006DB709 /* ViewController.swift in Sources */,
+				C928F3F1200CCE500034E82E /* DecoratedSignature.swift in Sources */,
+				C92E9DCB200B8801006DB709 /* ExDR.swift in Sources */,
+				C92E9DDD200B98D2006DB709 /* Operation.swift in Sources */,
 				C92E9DBA200B8769006DB709 /* AppDelegate.swift in Sources */,
+				C92E9DD3200B8DBD006DB709 /* Literals.swift in Sources */,
+				C928F3EC200CC2360034E82E /* Asset.swift in Sources */,
+				C92E9DD9200B8FC0006DB709 /* TimeBounds.swift in Sources */,
+				C928F3EF200CCD8E0034E82E /* TransactionEnvelope.swift in Sources */,
+				C92E9DDB200B9312006DB709 /* Memo.swift in Sources */,
+				C92E9DD5200B8DE6006DB709 /* PublicKey.swift in Sources */,
+				C92E9DD0200B8883006DB709 /* Base32.swift in Sources */,
+				C928F3EA200CC14C0034E82E /* PaymentOp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Stellar/Stellar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -271,6 +339,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quietspark.Stellar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Stellar/Stellar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -279,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Stellar/Stellar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -287,6 +358,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quietspark.Stellar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Stellar/Stellar-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
