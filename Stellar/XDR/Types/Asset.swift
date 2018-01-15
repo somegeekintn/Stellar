@@ -36,8 +36,8 @@ import Foundation
 
 enum Asset: XDRDecodable {
 	case native
-	case alphaNum4(_ : String)
-	case alphaNum12(_ : String)
+	case alphaNum4(code: String, issuer: PublicKey)
+	case alphaNum12(code: String, issuer: PublicKey)
 
 	init?(xdr: ExDR) {
 		guard let rawValue = xdr.decodeEnum() else { return nil }
@@ -47,14 +47,16 @@ enum Asset: XDRDecodable {
 				self = .native
 			
 			case 1:
-				guard let bytes = xdr.decodeBytes(4), let str = String(utf8String: bytes) else { return nil }
-				
-				self = .alphaNum4(str)
+				guard let bytes = xdr.decodeBytes(4), let code = String(utf8String: bytes) else { return nil }
+				guard let issuer = PublicKey(xdr: xdr) else { return nil }
+
+				self = .alphaNum4(code: code, issuer: issuer)
 			
 			case 2:
-				guard let bytes = xdr.decodeBytes(12), let str = String(utf8String: bytes) else { return nil }
-				
-				self = .alphaNum12(str)
+				guard let bytes = xdr.decodeBytes(12), let code = String(utf8String: bytes) else { return nil }
+				guard let issuer = PublicKey(xdr: xdr) else { return nil }
+
+				self = .alphaNum12(code: code, issuer: issuer)
 
 			default:
 				return nil

@@ -42,9 +42,13 @@ enum PublicKeyType: XDRDecodable {
 	}
 }
 
-class PublicKey: XDRDecodable {
-	let keyType		: PublicKeyType
-	let key			: String
+class PublicKey: XDRDecodable, CustomStringConvertible {
+	let keyType			: PublicKeyType
+	let key				: String
+	
+	var description		: String {
+		return self.key
+	}
 	
 	required init?(xdr: ExDR) {
 		guard let keyType = PublicKeyType(xdr: xdr) else { return nil }

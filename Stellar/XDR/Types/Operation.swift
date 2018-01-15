@@ -65,7 +65,7 @@ class Operation: XDRDecodable, CustomStringConvertible {
 		case createAccount
 		case payment(_ : PaymentOp)
 		case pathPayment
-		case manageOffer
+		case manageOffer(_ : ManageOfferOp)
 		case createPassiveOffer
 		case setOption
 		case changeTrust
@@ -79,7 +79,7 @@ class Operation: XDRDecodable, CustomStringConvertible {
 				case .createAccount:				return "createAccount"
 				case .payment(let op):				return "payment: \(op)"
 				case .pathPayment:					return "pathPayment"
-				case .manageOffer:					return "manageOffer"
+				case .manageOffer(let op):			return "manageOffer: \(op)"
 				case .createPassiveOffer:			return "createPassiveOffer"
 				case .setOption:					return "setOption"
 				case .changeTrust:					return "changeTrust"
@@ -106,7 +106,9 @@ class Operation: XDRDecodable, CustomStringConvertible {
 					self = .pathPayment
 
 				case 3:
-					self = .manageOffer
+					guard let op = ManageOfferOp(xdr: xdr) else { return nil }
+					
+					self = .manageOffer(op)
 
 				case 4:
 					self = .createPassiveOffer
@@ -139,7 +141,7 @@ class Operation: XDRDecodable, CustomStringConvertible {
 	let body			: Operation.Body
 
 	var description		: String {
-		return "Operation: source: \(self.sourceAccount.map({ "\($0)" }) ?? "no source"), \(self.body)"
+		return "Operation - source: \(self.sourceAccount.map({ "\($0)" }) ?? "no source"), \(self.body)"
 	}
 
 	required init?(xdr: ExDR) {
