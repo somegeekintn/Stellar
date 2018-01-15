@@ -13,6 +13,7 @@
 		C928F3F1200CCE500034E82E /* DecoratedSignature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3F0200CCE500034E82E /* DecoratedSignature.swift */; };
 		C928F3F3200CE32D0034E82E /* ManageOfferOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3F2200CE32D0034E82E /* ManageOfferOp.swift */; };
 		C928F3F5200CE3F80034E82E /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3F4200CE3F80034E82E /* Price.swift */; };
+		C928F3F7200CE9540034E82E /* CreateAccountOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928F3F6200CE9540034E82E /* CreateAccountOp.swift */; };
 		C92E9DBA200B8769006DB709 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DB9200B8769006DB709 /* AppDelegate.swift */; };
 		C92E9DBC200B8769006DB709 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E9DBB200B8769006DB709 /* ViewController.swift */; };
 		C92E9DBE200B8769006DB709 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C92E9DBD200B8769006DB709 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		C928F3F0200CCE500034E82E /* DecoratedSignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedSignature.swift; sourceTree = "<group>"; };
 		C928F3F2200CE32D0034E82E /* ManageOfferOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageOfferOp.swift; sourceTree = "<group>"; };
 		C928F3F4200CE3F80034E82E /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		C928F3F6200CE9540034E82E /* CreateAccountOp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountOp.swift; sourceTree = "<group>"; };
 		C92E9DB6200B8769006DB709 /* Stellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stellar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92E9DB9200B8769006DB709 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C92E9DBB200B8769006DB709 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				C928F3EB200CC2360034E82E /* Asset.swift */,
+				C928F3F6200CE9540034E82E /* CreateAccountOp.swift */,
 				C928F3F0200CCE500034E82E /* DecoratedSignature.swift */,
 				C92E9DD2200B8DBD006DB709 /* Literals.swift */,
 				C928F3F2200CE32D0034E82E /* ManageOfferOp.swift */,
@@ -206,6 +209,7 @@
 				C928F3EC200CC2360034E82E /* Asset.swift in Sources */,
 				C928F3F5200CE3F80034E82E /* Price.swift in Sources */,
 				C92E9DD9200B8FC0006DB709 /* TimeBounds.swift in Sources */,
+				C928F3F7200CE9540034E82E /* CreateAccountOp.swift in Sources */,
 				C928F3EF200CCD8E0034E82E /* TransactionEnvelope.swift in Sources */,
 				C92E9DDB200B9312006DB709 /* Memo.swift in Sources */,
 				C92E9DD5200B8DE6006DB709 /* PublicKey.swift in Sources */,

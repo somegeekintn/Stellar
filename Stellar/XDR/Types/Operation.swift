@@ -62,7 +62,7 @@ import Foundation
 
 class Operation: XDRDecodable, CustomStringConvertible {
 	enum Body: XDRDecodable, CustomStringConvertible {
-		case createAccount
+		case createAccount(_ : CreateAccountOp)
 		case payment(_ : PaymentOp)
 		case pathPayment
 		case manageOffer(_ : ManageOfferOp)
@@ -76,7 +76,7 @@ class Operation: XDRDecodable, CustomStringConvertible {
 		
 		var description	: String {
 			switch self {
-				case .createAccount:				return "createAccount"
+				case .createAccount(let op):		return "createAccount: \(op)"
 				case .payment(let op):				return "payment: \(op)"
 				case .pathPayment:					return "pathPayment"
 				case .manageOffer(let op):			return "manageOffer: \(op)"
@@ -95,7 +95,9 @@ class Operation: XDRDecodable, CustomStringConvertible {
 			
 			switch rawValue {
 				case 0:
-					self = .createAccount
+					guard let op = CreateAccountOp(xdr: xdr) else { return nil }
+					
+					self = .createAccount(op)
 				
 				case 1:
 					guard let op = PaymentOp(xdr: xdr) else { return nil }

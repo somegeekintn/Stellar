@@ -42,8 +42,8 @@ enum Memo: XDRDecodable {
 	case none
 	case text(_ : String)
 	case id(_ : UInt64)
-	case hash(_ : [Int8])
-	case retHash(_ : [Int8])
+	case hash(_ : String)
+	case retHash(_ : String)
 
 	init?(xdr: ExDR) {
 		guard let rawValue = xdr.decodeEnum() else { return nil }
@@ -65,12 +65,12 @@ enum Memo: XDRDecodable {
 			case 3:
 				guard let hash = xdr.decodeBytes(32) else { return nil }
 
-				self = .hash(hash)
+				self = .hash(Data(bytes: hash, count: hash.count).base64EncodedString())
 			
 			case 4:
 				guard let hash = xdr.decodeBytes(32) else { return nil }
 
-				self = .retHash(hash)
+				self = .retHash(Data(bytes: hash, count: hash.count).base64EncodedString())
 
 			default:
 				return nil
