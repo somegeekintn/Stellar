@@ -29,38 +29,31 @@ import Foundation
 //	});
 //
 
-enum PublicKeyType: XDRDecodable {
-	case ed25519
+enum PublicKey: XDRDecodable, CustomStringConvertible {
+	case ed25519(_: String)
 	
-	init?(xdr: ExDR) {
+	var description		: String {
+		switch self {
+			case .ed25519(let addr):		return "ed25519 - \(addr)"
+		}
+	}
+
+	init?(xdr: ExDR, capacity: Int = 1) {
 		guard let rawValue = xdr.decodeEnum() else { return nil }
 		
 		switch rawValue {
-			case 0:		self = .ed25519
-			default:	return nil
+			case 0:
+				guard var keyBytes	= xdr.decodeBytes(32) else { return nil }
+				
+				keyBytes.insert(6 << 3, at: 0)
+				keyBytes.append(contentsOf: PublicKey.crc(keyBytes))
+				self = .ed25519(Base32Encode(data: Data(bytes: keyBytes, count: keyBytes.count)))
+
+			default:
+				return nil
 		}
 	}
-}
 
-class PublicKey: XDRDecodable, CustomStringConvertible {
-	let keyType			: PublicKeyType
-	let key				: String
-	
-	var description		: String {
-		return self.key
-	}
-	
-	required init?(xdr: ExDR) {
-		guard let keyType = PublicKeyType(xdr: xdr) else { return nil }
-		guard var keyBytes = xdr.decodeBytes(32) else { return nil }
-
-		keyBytes.insert(6 << 3, at: 0)
-		keyBytes.append(contentsOf: PublicKey.crc(keyBytes))
-
-		self.keyType = keyType
-		self.key = Base32Encode(data: Data(bytes: keyBytes, count: keyBytes.count))
-	}
-	
 	static func crc(_ buffer: [Int8]) -> [Int8] {
 		var crc	= UInt16(0)
 	

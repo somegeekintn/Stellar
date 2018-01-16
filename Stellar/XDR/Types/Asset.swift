@@ -39,7 +39,7 @@ enum Asset: XDRDecodable {
 	case alphaNum4(code: String, issuer: PublicKey)
 	case alphaNum12(code: String, issuer: PublicKey)
 
-	init?(xdr: ExDR) {
+	init?(xdr: ExDR, capacity: Int = 1) {
 		guard let rawValue = xdr.decodeEnum() else { return nil }
 		
 		switch rawValue {

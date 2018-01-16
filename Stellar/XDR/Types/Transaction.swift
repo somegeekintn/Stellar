@@ -52,7 +52,7 @@ class Transaction: XDRDecodable, CustomStringConvertible {
 		return desc
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let accountID		= PublicKey(xdr: xdr) else { return nil }
 		guard let fee			= UInt32(xdr: xdr) else { return nil }
 		guard let seqNum		= UInt64(xdr: xdr) else { return nil }

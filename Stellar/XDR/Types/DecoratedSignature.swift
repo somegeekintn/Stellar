@@ -28,7 +28,7 @@ class DecoratedSignature: XDRDecodable, CustomStringConvertible {
 		return "hint: \(self.hint), signature: \(self.signature)"
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let hintBytes		= xdr.decodeBytes(4) else { return nil }
 		guard let sigBytes		= xdr.decodeBytes(64, variable: true) else { return nil }
 		var hintEncodeBytes	= [Int8](repeating: 0, count: 32)

@@ -24,7 +24,7 @@ class Price: XDRDecodable, CustomStringConvertible {
 		return "n: \(self.n), d: \(self.d)"
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let n		= Int32(xdr: xdr) else { return nil }
 		guard let d		= Int32(xdr: xdr) else { return nil }
 

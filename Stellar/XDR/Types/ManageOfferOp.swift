@@ -30,7 +30,7 @@ class ManageOfferOp: XDRDecodable, CustomStringConvertible {
 		return "selling: \(self.selling), buying: \(self.buying), amount: \(self.amount), price: \(self.price), offerId: \(self.offerId))"
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let selling		= Asset(xdr: xdr) else { return nil }
 		guard let buying		= Asset(xdr: xdr) else { return nil }
 		guard let amount		= Int64(xdr: xdr) else { return nil }

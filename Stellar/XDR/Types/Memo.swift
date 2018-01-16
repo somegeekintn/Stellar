@@ -45,7 +45,7 @@ enum Memo: XDRDecodable {
 	case hash(_ : String)
 	case retHash(_ : String)
 
-	init?(xdr: ExDR) {
+	init?(xdr: ExDR, capacity: Int = 1) {
 		guard let rawValue = xdr.decodeEnum() else { return nil }
 		
 		switch rawValue {
@@ -53,7 +53,7 @@ enum Memo: XDRDecodable {
 				self = .none
 				
 			case 1:
-				guard let str = xdr.decodeString(28) else { return nil }
+				guard let str = String(xdr: xdr, capacity: 28) else { return nil }
 				
 				self = .text(str)
 			

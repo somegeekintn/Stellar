@@ -24,7 +24,7 @@ class CreateAccountOp: XDRDecodable, CustomStringConvertible {
 		return "destination: \(self.destination), startingBalance: \(self.startingBalance))"
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let destination		= PublicKey(xdr: xdr) else { return nil }
 		guard let startingBalance	= Int64(xdr: xdr) else { return nil }
 

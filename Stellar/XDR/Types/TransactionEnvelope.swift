@@ -24,7 +24,7 @@ class TransactionEnvelope: XDRDecodable, CustomStringConvertible {
 		return "TransactionEnvelope\n\ttx: \(self.tx)\n\tsignatures: \(self.signatures)"
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let tx			= Transaction(xdr: xdr) else { return nil }
 		guard let signatures	= [DecoratedSignature](xdr: xdr, capacity: 20) else { return nil }
 

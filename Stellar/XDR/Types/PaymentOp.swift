@@ -26,7 +26,7 @@ class PaymentOp: XDRDecodable, CustomStringConvertible {
 		return "dest: \(self.destination), asset: \(self.asset), amount: \(self.amount)"
 	}
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let destination	= PublicKey(xdr: xdr) else { return nil }
 		guard let asset			= Asset(xdr: xdr) else { return nil }
 		guard let amount		= Int64(xdr: xdr) else { return nil }

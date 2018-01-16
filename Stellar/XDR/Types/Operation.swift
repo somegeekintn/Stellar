@@ -67,12 +67,12 @@ class Operation: XDRDecodable, CustomStringConvertible {
 		case pathPayment
 		case manageOffer(_ : ManageOfferOp)
 		case createPassiveOffer
-		case setOption
+		case setOption(_ : SetOptionsOp)
 		case changeTrust
 		case allowTrust
 		case accountMerge
 		case inflation
-		case manageDatum
+		case manageDatum(_ : ManageDataOp)
 		
 		var description	: String {
 			switch self {
@@ -81,16 +81,16 @@ class Operation: XDRDecodable, CustomStringConvertible {
 				case .pathPayment:					return "pathPayment"
 				case .manageOffer(let op):			return "manageOffer: \(op)"
 				case .createPassiveOffer:			return "createPassiveOffer"
-				case .setOption:					return "setOption"
+				case .setOption(let op):			return "setOption: \(op)"
 				case .changeTrust:					return "changeTrust"
 				case .allowTrust:					return "allowTrust"
 				case .accountMerge:					return "accountMerge"
 				case .inflation:					return "inflation"
-				case .manageDatum:					return "manageDatum"
+				case .manageDatum(let op):			return "manageDatum: \(op)"
 			}
 		}
 
-		init?(xdr: ExDR) {
+		init?(xdr: ExDR, capacity: Int = 1) {
 			guard let rawValue = xdr.decodeEnum() else { return nil }
 			
 			switch rawValue {
@@ -116,7 +116,9 @@ class Operation: XDRDecodable, CustomStringConvertible {
 					self = .createPassiveOffer
 
 				case 5:
-					self = .setOption
+					guard let op = SetOptionsOp(xdr: xdr) else { return nil }
+					
+					self = .setOption(op)
 
 				case 6:
 					self = .changeTrust
@@ -131,7 +133,9 @@ class Operation: XDRDecodable, CustomStringConvertible {
 					self = .inflation
 
 				case 10:
-					self = .manageDatum
+					guard let op = ManageDataOp(xdr: xdr) else { return nil }
+					
+					self = .manageDatum(op)
 
 				default:
 					return nil
@@ -146,7 +150,7 @@ class Operation: XDRDecodable, CustomStringConvertible {
 		return "Operation - source: \(self.sourceAccount.map({ "\($0)" }) ?? "no source"), \(self.body)"
 	}
 
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let accountID		= PublicKey?(xdr: xdr) else { return nil }
 		guard let body			= Body(xdr: xdr) else { return nil }
 

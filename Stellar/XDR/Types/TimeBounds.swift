@@ -20,7 +20,7 @@ class TimeBounds: XDRDecodable {
 	let minTime		: UInt64
 	let maxTime		: UInt64
 	
-	required init?(xdr: ExDR) {
+	required init?(xdr: ExDR, capacity: Int = 1) {
 		guard let minTime = UInt64(xdr: xdr) else { return nil }
 		guard let maxTime = UInt64(xdr: xdr) else { return nil }
 
